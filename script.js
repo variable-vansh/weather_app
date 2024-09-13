@@ -108,16 +108,13 @@ async function getWeather(inputLocation) {
         forecastTime.classList.add("forecastTime")
         forecastTime.innerText = currentHour + ":00"
 
-        let forecastTimeIconDiv = document.createElement("div")
-        forecastTimeIconDiv.classList.add("forecastTimeIconDiv")
-        forecastTimeIconDiv.innerText = "icon"
+
 
         let forecastTimeTemp = document.createElement("div")
         forecastTimeTemp.classList.add("forecastTimeTemp")
         forecastTimeTemp.innerText = responseData.days[currentDay].hours[currentHour].temp + " °C"
 
         todaysForecastCard.appendChild(forecastTime)
-        todaysForecastCard.appendChild(forecastTimeIconDiv)
         todaysForecastCard.appendChild(forecastTimeTemp)
 
 
@@ -152,16 +149,13 @@ async function getWeather(inputLocation) {
         forecastDate.classList.add("forecastDate")
         forecastDate.innerText = properDatetime
 
-        let forecastDateIconDiv = document.createElement("div")
-        forecastDateIconDiv.classList.add("forecastDateIconDiv")
-        forecastDateIconDiv.innerText = "icon"
+
 
         let forecastDateTempMaxMin = document.createElement("div")
         forecastDateTempMaxMin.classList.add("forecastDateTempMaxMin")
         forecastDateTempMaxMin.innerText = maxMinTempString
 
         futureDaysForecastCard.appendChild(forecastDate)
-        futureDaysForecastCard.appendChild(forecastDateIconDiv)
         futureDaysForecastCard.appendChild(forecastDateTempMaxMin)
 
         futureDaysForecast.appendChild(futureDaysForecastCard)
@@ -175,10 +169,15 @@ function newLocationInput(event) {
     //prevent form from submitting
     event.preventDefault();
 
+
     //get input value from input
     let inputLocation = document.querySelector(".locationInput").value;
 
     // console.log(inputLocation)
+    if (inputLocation == "") {
+        inputLocation = "New Delhi"
+        document.querySelector(".locationInput").placeholder = "New Delhi"
+    }
 
     getWeather(inputLocation)
 }
@@ -231,4 +230,8 @@ for (let x = 1; x <= 7; x++) {
     futureDaysForecastCard.appendChild(forecastDateTempMaxMin)
 
     futureDaysForecast.appendChild(futureDaysForecastCard)
+}
+
+window.onload = function () {
+    document.getElementById('clickClick').click();
 }

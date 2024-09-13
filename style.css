@@ -17,7 +17,11 @@ body {
     font-family: extraBold, serif;
 
     height: 100vh;
-    background-image: url('https://41.media.tumblr.com/efd15be8d41b12a7b0ef17fba27c3e20/tumblr_mqqy59HMaf1qzattso1_1280.jpg');
+    background-image: url('images/sky.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-image: url('https://41.media.tumblr.com/efd15be8d41b12a7b0ef17fba27c3e20/tumblr_mqqy59HMaf1qzattso1_1280.jpg'); */
 }
 
 .BigCardContainer {
@@ -31,8 +35,7 @@ body {
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(6, 1fr) 1.5fr 1fr;
 
-    grid-template-areas:
-        "locationCard locationCard locationCard locationCard sunTime sunTime sunTime"
+    grid-template-areas: "locationCard locationCard locationCard locationCard sunTime sunTime sunTime"
         "locationCard locationCard locationCard locationCard humidity wind visibility"
         "locationCard locationCard locationCard locationCard humidity wind visibility"
         "locationCard locationCard locationCard locationCard humidity wind visibility"

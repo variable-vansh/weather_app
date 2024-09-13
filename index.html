@@ -10,28 +10,94 @@
 </head>
 
 <body>
-
+    <!-- 
     <form action="">
         <label for="location">Enter Location</label>
         <input type="text" id="location" name="location" class="locationInput">
         <button onclick="newLocationInput(event)">Submit</button>
-    </form>
+    </form> -->
 
     <div class="BigCardContainer">
         <div id="locationCard">
 
+            <div class="levelOne">
+                <form action="">
+                    <input type="text" id="location" name="location" class="locationInput">
+                    <button onclick="newLocationInput(event)">Search</button>
+                </form>
+            </div>
+
+            <div class="levelTwo">
+                <div class="lvlTwoLeft">
+                    <div class="tempOnLocationCard">Temp °</div>
+                    <div class="weatherCondition">Rainy..whatever</div>
+                </div>
+
+                <div class="levelTwoRight">
+                    <div class="conditionIcon">
+                        icon
+                        <img src="" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="levelThree">
+                <div class="high">
+                    Highest : <div class="highValue"></div>
+                </div>
+                <div class="low">
+                    Lowest : <div class="lowestValue"></div>
+                </div>
+            </div>
+
         </div>
         <div id="sunTime">
-
+            <div class="sunrise">
+                Sunrise
+                <div class="sunriseTime">5:51</div>
+            </div>
+            <div class="sunTimeImg">
+                <img src="images/sunrise-forecast-svgrepo-com.svg" alt="" class="sunImg">
+            </div>
+            <div class="sunset">
+                Sunset
+                <div class="sunsetTime">18:30</div>
+            </div>
         </div>
         <div id="humidity">
-
+            <div class="humidityLabel">
+                Humidity
+            </div>
+            <div class="humidityIcon">
+                <img src="https://cdn-icons-png.flaticon.com/512/6393/6393330.png" alt="" class="himidityImg">
+            </div>
+            <div class="humidityValue">
+                83%
+            </div>
         </div>
         <div id="wind">
+            <div class="windLabel">
+                Wind
+            </div>
+            <div class="windIcon">
+                <img src="images/wind-alt-svgrepo-com.svg" alt="" class="windImg">
 
+            </div>
+            <div class="windValue">
+                10km/h
+            </div>
         </div>
         <div id="visibility">
+            <div class="visibilityLabel">
+                Visibility
+            </div>
+            <div class="visibilityIcon">
+                <img src="images/visibility-eye-svgrepo-com.svg" alt="" class="windImg">
 
+            </div>
+            <div class="visibilityValue">
+                25km
+            </div>
         </div>
         <div id="todaysForecast">
 

@@ -56,6 +56,22 @@ async function getWeather(inputLocation) {
     //visibility
     console.log(visibility)
 
+    //
+    document.querySelector(".sunriseTime").innerHTML = sunRiseTime.substring(0, 5)
+    document.querySelector(".sunsetTime").innerHTML = sunSetTime.substring(0, 5)
+
+    document.querySelector(".humidityValue").innerHTML = humidity + "%"
+    document.querySelector(".windValue").innerHTML = wind + " km/h"
+    document.querySelector(".visibilityValue").innerHTML = visibility + " km"
+
+    document.querySelector(".tempOnLocationCard").innerHTML = mainTemp + " °C"
+    document.querySelector(".weatherCondition").innerHTML = weatherCondition
+
+    document.querySelector(".highValue").innerText = "  " + mainMaxTemp + " °C"
+    document.querySelector(".lowestValue").innerText = "  " + mainMinTemp + " °C"
+
+
+
     console.log("--------------------------------------")
     console.log("------------Hourly-weather------------")
     console.log("--------------------------------------")
@@ -69,6 +85,8 @@ async function getWeather(inputLocation) {
 
     console.log(currentHour)
 
+
+    todaysForecast.innerHTML = "";
     // keep adding 2 and get 7 intervals
     for (let i = 1; i <= 7; i++) {
         currentHour = currentHour + 2;
@@ -81,7 +99,33 @@ async function getWeather(inputLocation) {
         console.log(responseData.days[currentDay].hours[currentHour].icon)
         console.log(responseData.days[currentDay].hours[currentHour].temp)
         console.log("--------------------------------------")
+
+        //
+        let todaysForecastCard = document.createElement("div");
+        todaysForecastCard.classList.add("todaysForecastCard")
+
+        let forecastTime = document.createElement("div")
+        forecastTime.classList.add("forecastTime")
+        forecastTime.innerText = currentHour + ":00"
+
+        let forecastTimeIconDiv = document.createElement("div")
+        forecastTimeIconDiv.classList.add("forecastTimeIconDiv")
+        forecastTimeIconDiv.innerText = "icon"
+
+        let forecastTimeTemp = document.createElement("div")
+        forecastTimeTemp.classList.add("forecastTimeTemp")
+        forecastTimeTemp.innerText = responseData.days[currentDay].hours[currentHour].temp + " °C"
+
+        todaysForecastCard.appendChild(forecastTime)
+        todaysForecastCard.appendChild(forecastTimeIconDiv)
+        todaysForecastCard.appendChild(forecastTimeTemp)
+
+
+
+        todaysForecast.appendChild(todaysForecastCard)
+
     }
+
 
     console.log("-----------------------------------")
     console.log("------------Next-7-Days------------")
@@ -89,14 +133,38 @@ async function getWeather(inputLocation) {
 
     //take next day
     //extract it's date, icon, max/min
+    futureDaysForecast.innerHTML = "";
 
     for (let i = 1; i <= 7; i++) {
         properDatetime = responseData.days[i].datetime.substring(8, 10) + '-' + responseData.days[i].datetime.substring(5, 7) + "-" + responseData.days[i].datetime.substring(2, 4)
         console.log("date:", properDatetime)
         console.log(responseData.days[i].icon)
-        maxMinTempString = Math.trunc(responseData.days[i].tempmax) + "/" + Math.trunc(responseData.days[i].tempmin);
+        maxMinTempString = Math.trunc(responseData.days[i].tempmax) + "°C/" + Math.trunc(responseData.days[i].tempmin) + "°C";
         console.log(maxMinTempString)
         console.log("-----------------------------------")
+
+        //
+
+        let futureDaysForecastCard = document.createElement("div");
+        futureDaysForecastCard.classList.add("futureDaysForecastCard")
+
+        let forecastDate = document.createElement("div")
+        forecastDate.classList.add("forecastDate")
+        forecastDate.innerText = properDatetime
+
+        let forecastDateIconDiv = document.createElement("div")
+        forecastDateIconDiv.classList.add("forecastDateIconDiv")
+        forecastDateIconDiv.innerText = "icon"
+
+        let forecastDateTempMaxMin = document.createElement("div")
+        forecastDateTempMaxMin.classList.add("forecastDateTempMaxMin")
+        forecastDateTempMaxMin.innerText = maxMinTempString
+
+        futureDaysForecastCard.appendChild(forecastDate)
+        futureDaysForecastCard.appendChild(forecastDateIconDiv)
+        futureDaysForecastCard.appendChild(forecastDateTempMaxMin)
+
+        futureDaysForecast.appendChild(futureDaysForecastCard)
     }
 }
 
@@ -113,4 +181,54 @@ function newLocationInput(event) {
     // console.log(inputLocation)
 
     getWeather(inputLocation)
+}
+
+let todaysForecast = document.querySelector("#todaysForecast")
+for (let x = 1; x <= 7; x++) {
+    let todaysForecastCard = document.createElement("div");
+    todaysForecastCard.classList.add("todaysForecastCard")
+
+    let forecastTime = document.createElement("div")
+    forecastTime.classList.add("forecastTime")
+    forecastTime.innerText = "time"
+
+    let forecastTimeIconDiv = document.createElement("div")
+    forecastTimeIconDiv.classList.add("forecastTimeIconDiv")
+    forecastTimeIconDiv.innerText = "icon"
+
+    let forecastTimeTemp = document.createElement("div")
+    forecastTimeTemp.classList.add("forecastTimeTemp")
+    forecastTimeTemp.innerText = "24°C"
+
+    todaysForecastCard.appendChild(forecastTime)
+    todaysForecastCard.appendChild(forecastTimeIconDiv)
+    todaysForecastCard.appendChild(forecastTimeTemp)
+
+
+
+    todaysForecast.appendChild(todaysForecastCard)
+}
+
+let futureDaysForecast = document.querySelector("#futureDaysForecast")
+for (let x = 1; x <= 7; x++) {
+    let futureDaysForecastCard = document.createElement("div");
+    futureDaysForecastCard.classList.add("futureDaysForecastCard")
+
+    let forecastDate = document.createElement("div")
+    forecastDate.classList.add("forecastDate")
+    forecastDate.innerText = "date"
+
+    let forecastDateIconDiv = document.createElement("div")
+    forecastDateIconDiv.classList.add("forecastDateIconDiv")
+    forecastDateIconDiv.innerText = "icon"
+
+    let forecastDateTempMaxMin = document.createElement("div")
+    forecastDateTempMaxMin.classList.add("forecastDateTempMaxMin")
+    forecastDateTempMaxMin.innerText = "24°C/32°C"
+
+    futureDaysForecastCard.appendChild(forecastDate)
+    futureDaysForecastCard.appendChild(forecastDateIconDiv)
+    futureDaysForecastCard.appendChild(forecastDateTempMaxMin)
+
+    futureDaysForecast.appendChild(futureDaysForecastCard)
 }

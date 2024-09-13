@@ -1,5 +1,11 @@
 * {
     margin: 0px;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: extraBold;
+    src: url(font//SUSE-SemiBold.ttf);
 }
 
 body {
@@ -8,11 +14,14 @@ body {
     justify-content: center;
     align-items: center;
 
+    font-family: extraBold, serif;
+
     height: 100vh;
+    background-image: url('https://41.media.tumblr.com/efd15be8d41b12a7b0ef17fba27c3e20/tumblr_mqqy59HMaf1qzattso1_1280.jpg');
 }
 
 .BigCardContainer {
-    background-color: black;
+    /* background-color: black; */
     height: 80vh;
     width: 1050px;
 
@@ -20,7 +29,7 @@ body {
 
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(6, 1fr) 1.5fr 1fr;
 
     grid-template-areas:
         "locationCard locationCard locationCard locationCard sunTime sunTime sunTime"
@@ -34,36 +43,263 @@ body {
 }
 
 #locationCard {
-    background-color: aquamarine;
     grid-area: locationCard;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px 0px 0px 0px;
+
+    /* background-color: aquamarine; */
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+
+    #locationCard,
+    #sunTime,
+    #humidity,
+    #wind,
+    #visibility,
+    #todaysForecast,
+    #futureDaysForecast,
+    .levelOne,
+    .levelThree {
+        -webkit-backdrop-filter: blur(50px);
+        backdrop-filter: blur(10px);
+    }
 }
 
 #sunTime {
-    background-color: orange;
+    /* background-color: orange; */
     grid-area: sunTime;
+    background-color: rgba(2255, 249, 194, 0.5);
+    border-radius: 0px 20px 0px 0px;
 }
 
 #humidity {
-    background-color: violet;
+    background-color: rgba(249, 249, 249, 0.5);
     grid-area: humidity;
 }
 
 #wind {
-    background-color: blue;
+    background-color: rgba(225, 226, 225, 0.5);
     grid-area: wind;
 }
 
 #visibility {
-    background-color: indigo;
+    background-color: rgba(249, 249, 249, 0.5);
     grid-area: visibility;
 }
 
 #todaysForecast {
-    background-color: yellowgreen;
+    background-color: rgba(202, 244, 255, 0.5);
     grid-area: todaysForecast;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #futureDaysForecast {
-    background-color: goldenrod;
+    background-color: rgba(160, 222, 255, 0.6);
     grid-area: futureDaysForecast;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 10px;
+
+    border-radius: 0px 0px 20px 20px;
+}
+
+.todaysForecastCard,
+.futureDaysForecastCard {
+    height: 100%;
+    width: 223.338px;
+
+    box-sizing: border-box;
+
+
+    text-align: center;
+    /* border: 10px solid red; */
+
+    /* border-radius: 0px 0px 20px 20px; */
+
+
+}
+
+#sunTime {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.sunTimeImg {
+    height: 100%;
+    width: 33.3330%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sunrise,
+.sunset {
+    width: 33.33%;
+    /* height: 100%; */
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    font-size: 20px;
+}
+
+
+
+.sunTimeImg>img {
+
+    height: 60px;
+    width: auto;
+}
+
+.humidityIcon>img,
+.windIcon>img,
+.visibilityIcon>img {
+
+    height: 60px;
+    width: auto;
+}
+
+#humidity,
+#wind,
+#visibility {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    font-size: 25px;
+}
+
+.todaysForecastCard,
+.futureDaysForecastCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    font-size: 20px;
+}
+
+.locationCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: rgba(219, 225, 227, 0.5);
+}
+
+.levelOne {
+    height: 25%;
+    width: 100%;
+
+    border-radius: 20px 0px 0px 0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    background-color: rgba(219, 225, 227, 0.5);
+}
+
+.levelTwo {
+    height: 50%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: rgba(219, 225, 227, 0.5);
+}
+
+.levelThree {
+    height: 25%;
+    width: 100%;
+
+    background-color: rgba(219, 225, 227, 0.5);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.high,
+.low {
+    display: flex;
+
+    font-size: 20px;
+}
+
+form {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 20px;
+}
+
+input {
+    width: 60%;
+    height: 40%;
+
+    /* border: none; */
+
+    border-radius: 20px 0px 0px 20px;
+
+    font-family: extraBold;
+    font-size: 19px;
+
+    text-align: center;
+
+    -webkit-spell-check: none;
+}
+
+button {
+    height: 40%;
+    width: 20%;
+
+    border: none;
+
+    border-radius: 0px 20px 20px 0px;
+
+    padding: 5px;
+
+    font-family: extraBold;
+    font-size: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lvlTwoLeft {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tempOnLocationCard {
+    font-size: 45px;
+}
+
+.weatherCondition {
+    font-size: 40px;
 }
